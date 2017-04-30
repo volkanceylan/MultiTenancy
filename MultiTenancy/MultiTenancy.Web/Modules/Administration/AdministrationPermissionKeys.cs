@@ -21,5 +21,6 @@ namespace MultiTenancy.Administration
     {
         public const string Security = "Administration:Security";
         public const string Translation = "Administration:Translation";
+        public const string Tenants = "Administration:Tenants";
     }
 }
