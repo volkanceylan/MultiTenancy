@@ -18,5 +18,6 @@
         public string Source { get; set; }
         public DateTime? UpdateDate { get; set; }
         public DateTime? LastDirectoryUpdate { get; set; }
+        public int TenantId { get; set; }
     }
 }
