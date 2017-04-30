@@ -9,9 +9,10 @@ namespace MultiTenancy.Administration.Entities
     using System.ComponentModel;
     using System.IO;
 
-    [ConnectionKey("Default"), TableName("[dbo].[Tenants]"), DisplayName("Tenant"), InstanceName("Tenant"), TwoLevelCached]
+    [ConnectionKey("Default"), TableName("[dbo].[Tenants]"), DisplayName("Tenants"), InstanceName("Tenant"), TwoLevelCached]
     [ReadPermission("Administration:Tenants")]
     [ModifyPermission("Administration:Tenants")]
+    [LookupScript("Administration.Tenant")]
     public sealed class TenantRow : Row, IIdRow, INameRow
     {
         [DisplayName("Tenant Id"), Identity]
