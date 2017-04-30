@@ -1578,7 +1578,6 @@
     <TypeScriptCompile Include="Modules\Northwind\Note\NotesEditor.ts" />
     <TypeScriptCompile Include="Modules\Northwind\OrderDetail\OrderDetailDialog.ts" />
     <TypeScriptCompile Include="Modules\Northwind\OrderDetail\OrderDetailsEditor.ts" />
-    <TypeScriptCompile Include="Modules\Northwind\Order\OrderBulkAction.ts" />
     <TypeScriptCompile Include="Modules\Northwind\Order\OrderGrid.ts" />
     <TypeScriptCompile Include="Modules\Northwind\Product\ProductDialog.ts" />
     <TypeScriptCompile Include="Modules\Northwind\Product\ProductGrid.ts" />
@@ -1603,6 +1602,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\DefaultDB\DefaultDB_20170430_134800_MultiTenant.cs" />
     <Compile Include="Modules\Administration\AdministrationNavigation.cs" />
     <Compile Include="Modules\Administration\Language\LanguageLookup.cs" />
     <Compile Include="Modules\Administration\RolePermission\RolePermissionUpdateRequest.cs" />
@@ -1762,7 +1762,6 @@
     <Compile Include="Modules\Northwind\Product\ProductLogRow.cs" />
     <Compile Include="Modules\Northwind\Region\RegionColumns.cs" />
     <Compile Include="Modules\Northwind\Reports\ReportsPage.cs" />
-    <Compile Include="Modules\Northwind\Reports\CustomerGrossSalesReport.cs" />
     <Compile Include="Modules\Northwind\Reports\SalesByCategoryReport.cs" />
     <Compile Include="Modules\Northwind\Shipper\ShipperColumns.cs" />
     <Compile Include="Modules\Northwind\Supplier\SupplierColumns.cs" />
