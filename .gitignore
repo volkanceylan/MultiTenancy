@@ -1,0 +1,9 @@
+.vs/
+obj/
+packages/
+*.log
+MultiTenancy/MultiTenancy.Web/bin/
+MultiTenancy/MultiTenancy.Web/App_Data/*.ldf
+MultiTenancy/MultiTenancy.Web/App_Data/*.mdf
+MultiTenancy/MultiTenancy.Web/App_Data/Mail/
+MultiTenancy/MultiTenancy.Web/node_modules/
