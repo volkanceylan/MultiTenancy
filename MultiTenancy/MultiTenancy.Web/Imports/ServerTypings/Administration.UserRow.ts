@@ -10,6 +10,8 @@
         UserImage?: string;
         LastDirectoryUpdate?: string;
         IsActive?: number;
+        TenantId?: number;
+        TenantName?: string;
         Password?: string;
         PasswordConfirm?: string;
         InsertUserId?: number;
@@ -40,6 +42,8 @@
             export declare const UserImage: string;
             export declare const LastDirectoryUpdate: string;
             export declare const IsActive: string;
+            export declare const TenantId: string;
+            export declare const TenantName: string;
             export declare const Password: string;
             export declare const PasswordConfirm: string;
             export declare const InsertUserId: string;
@@ -48,7 +52,7 @@
             export declare const UpdateDate: string;
         }
 
-        ['UserId', 'Username', 'Source', 'PasswordHash', 'PasswordSalt', 'DisplayName', 'Email', 'UserImage', 'LastDirectoryUpdate', 'IsActive', 'Password', 'PasswordConfirm', 'InsertUserId', 'InsertDate', 'UpdateUserId', 'UpdateDate'].forEach(x => (<any>Fields)[x] = x);
+        ['UserId', 'Username', 'Source', 'PasswordHash', 'PasswordSalt', 'DisplayName', 'Email', 'UserImage', 'LastDirectoryUpdate', 'IsActive', 'TenantId', 'TenantName', 'Password', 'PasswordConfirm', 'InsertUserId', 'InsertDate', 'UpdateUserId', 'UpdateDate'].forEach(x => (<any>Fields)[x] = x);
     }
 }
 

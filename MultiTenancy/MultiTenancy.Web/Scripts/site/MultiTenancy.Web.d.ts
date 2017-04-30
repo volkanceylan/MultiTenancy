@@ -141,6 +141,8 @@ declare namespace MultiTenancy.Administration {
     }
 }
 declare namespace MultiTenancy.Administration {
+}
+declare namespace MultiTenancy.Administration {
     class TenantForm extends Serenity.PrefixedContext {
         static formKey: string;
     }
@@ -157,20 +159,22 @@ declare namespace MultiTenancy.Administration {
         const idProperty = "TenantId";
         const nameProperty = "TenantName";
         const localTextPrefix = "Administration.Tenant";
+        const lookupKey = "Administration.Tenant";
+        function getLookup(): Q.Lookup<TenantRow>;
         namespace Fields {
-            const TenantId: any;
-            const TenantName: any;
+            const TenantId: string;
+            const TenantName: string;
         }
     }
 }
 declare namespace MultiTenancy.Administration {
     namespace TenantService {
         const baseUrl = "Administration/Tenant";
-        function Create(request: Serenity.SaveRequest<TenantRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Serenity.ServiceOptions<any>): JQueryXHR;
-        function Update(request: Serenity.SaveRequest<TenantRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Serenity.ServiceOptions<any>): JQueryXHR;
-        function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Serenity.ServiceOptions<any>): JQueryXHR;
-        function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<TenantRow>) => void, opt?: Serenity.ServiceOptions<any>): JQueryXHR;
-        function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<TenantRow>) => void, opt?: Serenity.ServiceOptions<any>): JQueryXHR;
+        function Create(request: Serenity.SaveRequest<TenantRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Update(request: Serenity.SaveRequest<TenantRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<TenantRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<TenantRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         namespace Methods {
             const Create: string;
             const Update: string;
@@ -227,6 +231,7 @@ declare namespace MultiTenancy.Administration {
         Password: Serenity.PasswordEditor;
         PasswordConfirm: Serenity.PasswordEditor;
         Source: Serenity.StringEditor;
+        TenantId: Serenity.LookupEditor;
     }
 }
 declare namespace MultiTenancy.Administration {
@@ -340,6 +345,8 @@ declare namespace MultiTenancy.Administration {
         UserImage?: string;
         LastDirectoryUpdate?: string;
         IsActive?: number;
+        TenantId?: number;
+        TenantName?: string;
         Password?: string;
         PasswordConfirm?: string;
         InsertUserId?: number;
@@ -365,6 +372,8 @@ declare namespace MultiTenancy.Administration {
             const UserImage: string;
             const LastDirectoryUpdate: string;
             const IsActive: string;
+            const TenantId: string;
+            const TenantName: string;
             const Password: string;
             const PasswordConfirm: string;
             const InsertUserId: string;
@@ -1780,6 +1789,7 @@ declare namespace MultiTenancy.Administration {
         protected getToolbarButtons(): Serenity.ToolButton[];
         protected updateInterface(): void;
         protected afterLoadEntity(): void;
+        protected getPropertyItems(): Serenity.PropertyItem[];
     }
 }
 declare namespace MultiTenancy.Administration {
