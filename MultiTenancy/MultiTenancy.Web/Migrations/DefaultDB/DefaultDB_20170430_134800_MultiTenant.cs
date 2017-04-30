@@ -7,9 +7,9 @@ namespace MultiTenancy.Migrations.DefaultDB
     {
         public override void Up()
         {
-            Create.Table("Tenants")
+            this.CreateTableWithId32("Tenants", "TenantId", s => s
                 .WithColumn("TenantId").AsInt32().Identity().PrimaryKey().NotNullable()
-                .WithColumn("TenantName").AsString(100).NotNullable();
+                .WithColumn("TenantName").AsString(100).NotNullable());
 
             Insert.IntoTable("Tenants").Row(new
             {
