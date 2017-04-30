@@ -1585,6 +1585,12 @@
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
     <TypeScriptCompile Include="Scripts\typings\serenity\Serenity.CoreLib.d.ts" />
+    <Content Include="Modules\Administration\Tenant\TenantIndex.cshtml" />
+    <TypeScriptCompile Include="Imports\ServerTypings\Administration.TenantRow.ts" />
+    <TypeScriptCompile Include="Imports\ServerTypings\Administration.TenantService.ts" />
+    <TypeScriptCompile Include="Imports\ServerTypings\Administration.TenantForm.ts" />
+    <TypeScriptCompile Include="Modules\Administration\Tenant\TenantGrid.ts" />
+    <TypeScriptCompile Include="Modules\Administration\Tenant\TenantDialog.ts" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
@@ -1866,6 +1872,12 @@
     <Compile Include="Modules\Northwind\SalesByCategory\SalesByCategoryRepository.cs" />
     <Compile Include="Modules\Northwind\SalesByCategory\SalesByCategoryEndpoint.cs" />
     <Compile Include="Modules\Northwind\CustomerDetails\CustomerDetailsRow.cs" />
+    <Compile Include="Modules\Administration\Tenant\TenantRow.cs" />
+    <Compile Include="Modules\Administration\Tenant\TenantColumns.cs" />
+    <Compile Include="Modules\Administration\Tenant\TenantForm.cs" />
+    <Compile Include="Modules\Administration\Tenant\TenantRepository.cs" />
+    <Compile Include="Modules\Administration\Tenant\TenantEndpoint.cs" />
+    <Compile Include="Modules\Administration\Tenant\TenantPage.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

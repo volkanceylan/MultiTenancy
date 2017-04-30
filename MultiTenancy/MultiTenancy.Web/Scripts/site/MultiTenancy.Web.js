@@ -154,6 +154,55 @@ var MultiTenancy;
 (function (MultiTenancy) {
     var Administration;
     (function (Administration) {
+        var TenantForm = (function (_super) {
+            __extends(TenantForm, _super);
+            function TenantForm() {
+                return _super !== null && _super.apply(this, arguments) || this;
+            }
+            return TenantForm;
+        }(Serenity.PrefixedContext));
+        TenantForm.formKey = 'Administration.Tenant';
+        Administration.TenantForm = TenantForm;
+        [['TenantName', function () { return Serenity.StringEditor; }]].forEach(function (x) { return Object.defineProperty(TenantForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
+    })(Administration = MultiTenancy.Administration || (MultiTenancy.Administration = {}));
+})(MultiTenancy || (MultiTenancy = {}));
+var MultiTenancy;
+(function (MultiTenancy) {
+    var Administration;
+    (function (Administration) {
+        var TenantRow;
+        (function (TenantRow) {
+            TenantRow.idProperty = 'TenantId';
+            TenantRow.nameProperty = 'TenantName';
+            TenantRow.localTextPrefix = 'Administration.Tenant';
+            var Fields;
+            (function (Fields) {
+            })(Fields = TenantRow.Fields || (TenantRow.Fields = {}));
+            ['TenantId', 'TenantName'].forEach(function (x) { return Fields[x] = x; });
+        })(TenantRow = Administration.TenantRow || (Administration.TenantRow = {}));
+    })(Administration = MultiTenancy.Administration || (MultiTenancy.Administration = {}));
+})(MultiTenancy || (MultiTenancy = {}));
+var MultiTenancy;
+(function (MultiTenancy) {
+    var Administration;
+    (function (Administration) {
+        var TenantService;
+        (function (TenantService) {
+            TenantService.baseUrl = 'Administration/Tenant';
+            var Methods;
+            (function (Methods) {
+            })(Methods = TenantService.Methods || (TenantService.Methods = {}));
+            ['Create', 'Update', 'Delete', 'Retrieve', 'List'].forEach(function (x) {
+                TenantService[x] = function (r, s, o) { return Q.serviceRequest(TenantService.baseUrl + '/' + x, r, s, o); };
+                Methods[x] = TenantService.baseUrl + '/' + x;
+            });
+        })(TenantService = Administration.TenantService || (Administration.TenantService = {}));
+    })(Administration = MultiTenancy.Administration || (MultiTenancy.Administration = {}));
+})(MultiTenancy || (MultiTenancy = {}));
+var MultiTenancy;
+(function (MultiTenancy) {
+    var Administration;
+    (function (Administration) {
         var TranslationService;
         (function (TranslationService) {
             TranslationService.baseUrl = 'Administration/Translation';
@@ -1305,6 +1354,53 @@ var MultiTenancy;
             Serenity.Decorators.registerClass()
         ], RolePermissionDialog);
         Administration.RolePermissionDialog = RolePermissionDialog;
+    })(Administration = MultiTenancy.Administration || (MultiTenancy.Administration = {}));
+})(MultiTenancy || (MultiTenancy = {}));
+var MultiTenancy;
+(function (MultiTenancy) {
+    var Administration;
+    (function (Administration) {
+        var TenantDialog = (function (_super) {
+            __extends(TenantDialog, _super);
+            function TenantDialog() {
+                var _this = _super !== null && _super.apply(this, arguments) || this;
+                _this.form = new Administration.TenantForm(_this.idPrefix);
+                return _this;
+            }
+            TenantDialog.prototype.getFormKey = function () { return Administration.TenantForm.formKey; };
+            TenantDialog.prototype.getIdProperty = function () { return Administration.TenantRow.idProperty; };
+            TenantDialog.prototype.getLocalTextPrefix = function () { return Administration.TenantRow.localTextPrefix; };
+            TenantDialog.prototype.getNameProperty = function () { return Administration.TenantRow.nameProperty; };
+            TenantDialog.prototype.getService = function () { return Administration.TenantService.baseUrl; };
+            return TenantDialog;
+        }(Serenity.EntityDialog));
+        TenantDialog = __decorate([
+            Serenity.Decorators.registerClass(),
+            Serenity.Decorators.responsive()
+        ], TenantDialog);
+        Administration.TenantDialog = TenantDialog;
+    })(Administration = MultiTenancy.Administration || (MultiTenancy.Administration = {}));
+})(MultiTenancy || (MultiTenancy = {}));
+var MultiTenancy;
+(function (MultiTenancy) {
+    var Administration;
+    (function (Administration) {
+        var TenantGrid = (function (_super) {
+            __extends(TenantGrid, _super);
+            function TenantGrid(container) {
+                return _super.call(this, container) || this;
+            }
+            TenantGrid.prototype.getColumnsKey = function () { return 'Administration.Tenant'; };
+            TenantGrid.prototype.getDialogType = function () { return Administration.TenantDialog; };
+            TenantGrid.prototype.getIdProperty = function () { return Administration.TenantRow.idProperty; };
+            TenantGrid.prototype.getLocalTextPrefix = function () { return Administration.TenantRow.localTextPrefix; };
+            TenantGrid.prototype.getService = function () { return Administration.TenantService.baseUrl; };
+            return TenantGrid;
+        }(Serenity.EntityGrid));
+        TenantGrid = __decorate([
+            Serenity.Decorators.registerClass()
+        ], TenantGrid);
+        Administration.TenantGrid = TenantGrid;
     })(Administration = MultiTenancy.Administration || (MultiTenancy.Administration = {}));
 })(MultiTenancy || (MultiTenancy = {}));
 var MultiTenancy;

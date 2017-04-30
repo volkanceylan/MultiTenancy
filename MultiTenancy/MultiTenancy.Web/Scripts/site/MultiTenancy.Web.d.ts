@@ -141,6 +141,46 @@ declare namespace MultiTenancy.Administration {
     }
 }
 declare namespace MultiTenancy.Administration {
+    class TenantForm extends Serenity.PrefixedContext {
+        static formKey: string;
+    }
+    interface TenantForm {
+        TenantName: Serenity.StringEditor;
+    }
+}
+declare namespace MultiTenancy.Administration {
+    interface TenantRow {
+        TenantId?: number;
+        TenantName?: string;
+    }
+    namespace TenantRow {
+        const idProperty = "TenantId";
+        const nameProperty = "TenantName";
+        const localTextPrefix = "Administration.Tenant";
+        namespace Fields {
+            const TenantId: any;
+            const TenantName: any;
+        }
+    }
+}
+declare namespace MultiTenancy.Administration {
+    namespace TenantService {
+        const baseUrl = "Administration/Tenant";
+        function Create(request: Serenity.SaveRequest<TenantRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Serenity.ServiceOptions<any>): JQueryXHR;
+        function Update(request: Serenity.SaveRequest<TenantRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Serenity.ServiceOptions<any>): JQueryXHR;
+        function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Serenity.ServiceOptions<any>): JQueryXHR;
+        function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<TenantRow>) => void, opt?: Serenity.ServiceOptions<any>): JQueryXHR;
+        function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<TenantRow>) => void, opt?: Serenity.ServiceOptions<any>): JQueryXHR;
+        namespace Methods {
+            const Create: string;
+            const Update: string;
+            const Delete: string;
+            const Retrieve: string;
+            const List: string;
+        }
+    }
+}
+declare namespace MultiTenancy.Administration {
     interface TranslationItem {
         Key?: string;
         SourceText?: string;
@@ -1679,6 +1719,26 @@ declare namespace MultiTenancy.Administration {
     interface RolePermissionDialogOptions {
         roleID?: number;
         title?: string;
+    }
+}
+declare namespace MultiTenancy.Administration {
+    class TenantDialog extends Serenity.EntityDialog<TenantRow, any> {
+        protected getFormKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getNameProperty(): string;
+        protected getService(): string;
+        protected form: TenantForm;
+    }
+}
+declare namespace MultiTenancy.Administration {
+    class TenantGrid extends Serenity.EntityGrid<TenantRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof TenantDialog;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        constructor(container: JQuery);
     }
 }
 declare namespace MultiTenancy.Administration {
