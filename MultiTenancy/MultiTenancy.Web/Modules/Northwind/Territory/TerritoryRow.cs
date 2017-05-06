@@ -11,7 +11,7 @@ namespace MultiTenancy.Northwind.Entities
     [ReadPermission(PermissionKeys.General)]
     [ModifyPermission(PermissionKeys.General)]
     [LookupScript("Northwind.Territory")]
-    public sealed class TerritoryRow : Row, IIdRow, INameRow
+    public sealed class TerritoryRow : Row, IIdRow, INameRow, IMultiTenantRow
     {
         [DisplayName("ID"), Identity]
         public Int32? ID

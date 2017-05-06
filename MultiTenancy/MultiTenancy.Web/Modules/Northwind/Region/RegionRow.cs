@@ -11,7 +11,7 @@ namespace MultiTenancy.Northwind.Entities
     [ReadPermission(PermissionKeys.General)]
     [ModifyPermission(PermissionKeys.General)]
     [LookupScript("Northwind.Region")]
-    public sealed class RegionRow : Row, IIdRow, INameRow
+    public sealed class RegionRow : Row, IIdRow, INameRow, IMultiTenantRow
     {
         [DisplayName("Region Id"), PrimaryKey, NotNull, Updatable(false), QuickSearch]
         public Int32? RegionID

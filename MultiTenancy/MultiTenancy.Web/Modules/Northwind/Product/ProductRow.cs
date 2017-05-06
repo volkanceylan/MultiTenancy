@@ -14,7 +14,7 @@ namespace MultiTenancy.Northwind.Entities
     [LookupScript("Northwind.Product")]
     [CaptureLog(typeof(ProductLogRow))]
     [LocalizationRow(typeof(ProductLangRow))]
-    public sealed class ProductRow : Row, IIdRow, INameRow
+    public sealed class ProductRow : Row, IIdRow, INameRow, IMultiTenantRow
     {
         [DisplayName("Product Id"), Identity, LookupInclude]
         public Int32? ProductID

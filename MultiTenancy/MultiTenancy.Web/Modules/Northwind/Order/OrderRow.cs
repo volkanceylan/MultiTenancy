@@ -11,7 +11,7 @@ namespace MultiTenancy.Northwind.Entities
     [ConnectionKey("Northwind"), TableName("Orders"), DisplayName("Orders"), InstanceName("Order"), TwoLevelCached]
     [ReadPermission(PermissionKeys.General)]
     [ModifyPermission(PermissionKeys.General)]
-    public sealed class OrderRow : Row, IIdRow, INameRow
+    public sealed class OrderRow : Row, IIdRow, INameRow, IMultiTenantRow
     {
         [DisplayName("Order ID"), NotNull, Identity, QuickSearch]
         public Int32? OrderID

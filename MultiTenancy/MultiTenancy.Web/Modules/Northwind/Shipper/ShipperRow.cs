@@ -11,7 +11,7 @@ namespace MultiTenancy.Northwind.Entities
     [ReadPermission(PermissionKeys.General)]
     [ModifyPermission(PermissionKeys.General)]
     [LookupScript("Northwind.Shipper")]
-    public sealed class ShipperRow : Row, IIdRow, INameRow
+    public sealed class ShipperRow : Row, IIdRow, INameRow, IMultiTenantRow
     {
         [DisplayName("Shipper Id"), Identity]
         public Int32? ShipperID

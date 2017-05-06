@@ -13,7 +13,7 @@ namespace MultiTenancy.Northwind.Entities
     [ModifyPermission(PermissionKeys.General)]
     [LookupScript("Northwind.Category")]
     [LocalizationRow(typeof(CategoryLangRow))]
-    public sealed class CategoryRow : Row, IIdRow, INameRow
+    public sealed class CategoryRow : Row, IIdRow, INameRow, IMultiTenantRow
     {
         [DisplayName("Category Id"), Identity]
         public Int32? CategoryID
