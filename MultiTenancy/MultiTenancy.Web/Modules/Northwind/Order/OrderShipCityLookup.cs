@@ -7,7 +7,7 @@ namespace MultiTenancy.Northwind.Scripts
     using Serenity.Web;
 
     [LookupScript("Northwind.OrderShipCity")]
-    public class OrderShipCityLookup : RowLookupScript<Entities.OrderRow>
+    public class OrderShipCityLookup : MultiTenantRowLookupScript<Entities.OrderRow>
     {
         public OrderShipCityLookup()
         {
@@ -25,6 +25,8 @@ namespace MultiTenancy.Northwind.Scripts
                     new Criteria(fld.ShipCountry).IsNotNull() &
                     new Criteria(fld.ShipCity) != "" &
                     new Criteria(fld.ShipCity).IsNotNull());
+
+            AddTenantFilter(query);
         }
 
         protected override void ApplyOrder(SqlQuery query)

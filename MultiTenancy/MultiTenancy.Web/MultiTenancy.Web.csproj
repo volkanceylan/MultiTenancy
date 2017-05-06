@@ -1736,7 +1736,7 @@
     <Compile Include="Modules\Common\Helpers\GetNextNumberRequest.cs" />
     <Compile Include="Modules\Northwind\Customer\EmployeeListDecorator.cs" />
     <Compile Include="Modules\Northwind\Customer\CustomerLookup.cs" />
-    <Compile Include="Modules\Northwind\Customer\CustomerCity.cs" />
+    <Compile Include="Modules\Northwind\Customer\CustomerCityLookup.cs" />
     <Compile Include="Modules\Northwind\Customer\CustomerRepresentativesRow.cs" />
     <Compile Include="Modules\Northwind\Employee\Gender.cs" />
     <Compile Include="Modules\Northwind\Category\CategoryColumns.cs" />
@@ -1749,8 +1749,8 @@
     <Compile Include="Modules\Northwind\Order\OrderDetailReport.cs" />
     <Compile Include="Modules\Northwind\Order\OrderListRequest.cs" />
     <Compile Include="Modules\Northwind\Order\OrderShippingState.cs" />
-    <Compile Include="Modules\Northwind\Order\OrderShipCity.cs" />
-    <Compile Include="Modules\Northwind\Order\OrderShipCountry.cs" />
+    <Compile Include="Modules\Northwind\Order\OrderShipCityLookup.cs" />
+    <Compile Include="Modules\Northwind\Order\OrderShipCountryLookup.cs" />
     <Compile Include="Modules\Northwind\Order\OrderColumns.cs" />
     <Compile Include="Modules\Northwind\NorthwindPermissionKeys.cs" />
     <Compile Include="Modules\Northwind\Product\ProductColumns.cs" />
