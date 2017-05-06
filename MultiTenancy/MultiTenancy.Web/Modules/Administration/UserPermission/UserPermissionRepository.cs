@@ -219,6 +219,7 @@ namespace MultiTenancy.Administration.Repositories
                     }
                 }
 
+                result.Remove(Administration.PermissionKeys.Tenants);
                 result.Remove("*");
                 result.Remove("?");
 
