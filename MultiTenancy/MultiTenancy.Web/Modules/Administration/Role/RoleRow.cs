@@ -27,6 +27,12 @@ namespace MultiTenancy.Administration.Entities
             set { Fields.RoleName[this] = value; }
         }
 
+        [Insertable(false), Updatable(false)]
+        public Int32? TenantId
+        {
+            get { return Fields.TenantId[this]; }
+            set { Fields.TenantId[this] = value; }
+        }
 
         IIdField IIdRow.IdField
         {
@@ -49,6 +55,7 @@ namespace MultiTenancy.Administration.Entities
         {
             public Int32Field RoleId;
             public StringField RoleName;
+            public Int32Field TenantId;
 
             public RowFields()
                 : base("Roles")
