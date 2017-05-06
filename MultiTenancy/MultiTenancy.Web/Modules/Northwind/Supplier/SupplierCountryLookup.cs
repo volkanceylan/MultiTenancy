@@ -6,7 +6,7 @@ namespace MultiTenancy.Northwind.Scripts
     using Serenity.Web;
 
     [LookupScript("Northwind.SupplierCountry")]
-    public class SupplierCountryLookup : RowLookupScript<Entities.SupplierRow>
+    public class SupplierCountryLookup : MultiTenantRowLookupScript<Entities.SupplierRow>
     {
         public SupplierCountryLookup()
         {
@@ -21,6 +21,8 @@ namespace MultiTenancy.Northwind.Scripts
                 .Where(
                     new Criteria(fld.Country) != "" &
                     new Criteria(fld.Country).IsNotNull());
+
+            AddTenantFilter(query);
         }
 
         protected override void ApplyOrder(SqlQuery query)
