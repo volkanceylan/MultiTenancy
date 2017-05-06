@@ -96,6 +96,7 @@ namespace MultiTenancy.Northwind.Entities
             get { return Fields.HomePage[this]; }
             set { Fields.HomePage[this] = value; }
         }
+
         [Insertable(false), Updatable(false)]
         public Int32? TenantId
         {

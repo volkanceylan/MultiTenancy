@@ -194,6 +194,13 @@ namespace MultiTenancy.Northwind.Entities
             set { Fields.CategoryPicture[this] = value; }
         }
 
+        [Insertable(false), Updatable(false)]
+        public Int32? TenantId
+        {
+            get { return Fields.TenantId[this]; }
+            set { Fields.TenantId[this] = value; }
+        }
+
         IIdField IIdRow.IdField
         {
             get { return Fields.ProductID; }
@@ -202,6 +209,11 @@ namespace MultiTenancy.Northwind.Entities
         StringField INameRow.NameField
         {
             get { return Fields.ProductName; }
+        }
+
+        public Int32Field TenantIdField
+        {
+            get { return Fields.TenantId; }
         }
 
         public static readonly RowFields Fields = new RowFields().Init();
@@ -224,6 +236,7 @@ namespace MultiTenancy.Northwind.Entities
             public Int16Field UnitsInStock;
             public Int16Field UnitsOnOrder;
             public Int16Field ReorderLevel;
+            public Int32Field TenantId;
 
             public StringField SupplierCompanyName;
             public StringField SupplierContactName;

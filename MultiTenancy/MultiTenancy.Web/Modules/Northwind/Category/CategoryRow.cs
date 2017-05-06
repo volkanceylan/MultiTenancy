@@ -43,6 +43,13 @@ namespace MultiTenancy.Northwind.Entities
             set { Fields.Picture[this] = value; }
         }
 
+        [Insertable(false), Updatable(false)]
+        public Int32? TenantId
+        {
+            get { return Fields.TenantId[this]; }
+            set { Fields.TenantId[this] = value; }
+        }
+
         IIdField IIdRow.IdField
         {
             get { return Fields.CategoryID; }
@@ -51,6 +58,11 @@ namespace MultiTenancy.Northwind.Entities
         StringField INameRow.NameField
         {
             get { return Fields.CategoryName; }
+        }
+
+        public Int32Field TenantIdField
+        {
+            get { return Fields.TenantId; }
         }
 
         public static readonly RowFields Fields = new RowFields().Init();
@@ -66,6 +78,7 @@ namespace MultiTenancy.Northwind.Entities
             public StringField CategoryName;
             public StringField Description;
             public StreamField Picture;
+            public Int32Field TenantId;
 
             public RowFields()
             {

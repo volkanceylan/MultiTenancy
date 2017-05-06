@@ -217,6 +217,13 @@ namespace MultiTenancy.Northwind.Entities
             set { Fields.DetailList[this] = value; }
         }
 
+        [Insertable(false), Updatable(false)]
+        public Int32? TenantId
+        {
+            get { return Fields.TenantId[this]; }
+            set { Fields.TenantId[this] = value; }
+        }
+
         IIdField IIdRow.IdField
         {
             get { return Fields.OrderID; }
@@ -225,6 +232,11 @@ namespace MultiTenancy.Northwind.Entities
         StringField INameRow.NameField
         {
             get { return Fields.CustomerID; }
+        }
+
+        public Int32Field TenantIdField
+        {
+            get { return Fields.TenantId; }
         }
 
         public static readonly RowFields Fields = new RowFields().Init();
@@ -250,6 +262,7 @@ namespace MultiTenancy.Northwind.Entities
             public StringField ShipRegion;
             public StringField ShipPostalCode;
             public StringField ShipCountry;
+            public Int32Field TenantId;
 
             public StringField CustomerCompanyName;
             public StringField CustomerContactName;

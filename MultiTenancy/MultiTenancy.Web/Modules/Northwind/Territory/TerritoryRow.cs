@@ -48,6 +48,13 @@ namespace MultiTenancy.Northwind.Entities
             set { Fields.RegionDescription[this] = value; }
         }
 
+        [Insertable(false), Updatable(false)]
+        public Int32? TenantId
+        {
+            get { return Fields.TenantId[this]; }
+            set { Fields.TenantId[this] = value; }
+        }
+
         IIdField IIdRow.IdField
         {
             get { return Fields.ID; }
@@ -56,6 +63,11 @@ namespace MultiTenancy.Northwind.Entities
         StringField INameRow.NameField
         {
             get { return Fields.TerritoryID; }
+        }
+
+        public Int32Field TenantIdField
+        {
+            get { return Fields.TenantId; }
         }
 
         public static readonly RowFields Fields = new RowFields().Init();
@@ -71,6 +83,7 @@ namespace MultiTenancy.Northwind.Entities
             public StringField TerritoryID;
             public StringField TerritoryDescription;
             public Int32Field RegionID;
+            public Int32Field TenantId;
 
             public StringField RegionDescription;
 

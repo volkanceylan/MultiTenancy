@@ -12,7 +12,7 @@ namespace MultiTenancy.Northwind.Entities
     [ReadPermission(PermissionKeys.General)]
     [ModifyPermission(PermissionKeys.General)]
     [LookupScript("Northwind.Employee")]
-    public sealed class EmployeeRow : Row, IIdRow, INameRow
+    public sealed class EmployeeRow : Row, IIdRow, INameRow, IMultiTenantRow
     {
         [DisplayName("Employee Id"), Identity]
         public Int32? EmployeeID
@@ -282,6 +282,13 @@ namespace MultiTenancy.Northwind.Entities
             set { Fields.ReportsToPhotoPath[this] = value; }
         }
 
+        [Insertable(false), Updatable(false)]
+        public Int32? TenantId
+        {
+            get { return Fields.TenantId[this]; }
+            set { Fields.TenantId[this] = value; }
+        }
+
         IIdField IIdRow.IdField
         {
             get { return Fields.EmployeeID; }
@@ -290,6 +297,11 @@ namespace MultiTenancy.Northwind.Entities
         StringField INameRow.NameField
         {
             get { return Fields.FullName; }
+        }
+
+        public Int32Field TenantIdField
+        {
+            get { return Fields.TenantId; }
         }
 
         public static readonly RowFields Fields = new RowFields().Init();
@@ -320,6 +332,7 @@ namespace MultiTenancy.Northwind.Entities
             public StringField Notes;
             public Int32Field ReportsTo;
             public StringField PhotoPath;
+            public Int32Field TenantId;
 
             public StringField ReportsToFullName;
             public StringField ReportsToLastName;

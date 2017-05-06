@@ -34,6 +34,13 @@ namespace MultiTenancy.Northwind.Entities
             set { Fields.Phone[this] = value; }
         }
 
+        [Insertable(false), Updatable(false)]
+        public Int32? TenantId
+        {
+            get { return Fields.TenantId[this]; }
+            set { Fields.TenantId[this] = value; }
+        }
+
         IIdField IIdRow.IdField
         {
             get { return Fields.ShipperID; }
@@ -42,6 +49,11 @@ namespace MultiTenancy.Northwind.Entities
         StringField INameRow.NameField
         {
             get { return Fields.CompanyName; }
+        }
+
+        public Int32Field TenantIdField
+        {
+            get { return Fields.TenantId; }
         }
 
         public static readonly RowFields Fields = new RowFields().Init();
@@ -56,6 +68,8 @@ namespace MultiTenancy.Northwind.Entities
             public Int32Field ShipperID;
             public StringField CompanyName;
             public StringField Phone;
+            public Int32Field TenantId;
+
             public RowFields()
             {
                 LocalTextPrefix = "Northwind.Shipper";
