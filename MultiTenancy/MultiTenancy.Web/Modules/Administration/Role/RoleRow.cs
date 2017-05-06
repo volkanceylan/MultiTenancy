@@ -11,7 +11,7 @@ namespace MultiTenancy.Administration.Entities
     [ReadPermission(PermissionKeys.Security)]
     [ModifyPermission(PermissionKeys.Security)]
     [LookupScript("Administration.Role")]
-    public sealed class RoleRow : Row, IIdRow, INameRow
+    public sealed class RoleRow : Row, IIdRow, INameRow, IMultiTenantRow
     {
         [DisplayName("Role Id"), Identity, ForeignKey("Roles", "RoleId"), LeftJoin("jRole")]
         public Int32? RoleId
@@ -42,6 +42,11 @@ namespace MultiTenancy.Administration.Entities
         StringField INameRow.NameField
         {
             get { return Fields.RoleName; }
+        }
+
+        public Int32Field TenantIdField
+        {
+            get { return Fields.TenantId; }
         }
 
         public static readonly RowFields Fields = new RowFields().Init();

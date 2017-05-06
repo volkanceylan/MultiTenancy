@@ -37,63 +37,9 @@ namespace MultiTenancy.Administration.Repositories
             return new MyListHandler().Process(connection, request);
         }
 
-        private class MySaveHandler : SaveRequestHandler<MyRow>
-        {
-            protected override void SetInternalFields()
-            {
-                base.SetInternalFields();
-
-                if (IsCreate)
-                    Row.TenantId = ((UserDefinition)Authorization.UserDefinition).TenantId;
-            }
-
-            protected override void ValidateRequest()
-            {
-                base.ValidateRequest();
-
-                if (IsUpdate)
-                {
-                    var user = (UserDefinition)Authorization.UserDefinition;
-                    if (Old.TenantId != user.TenantId)
-                        Authorization.ValidatePermission(PermissionKeys.Tenants);
-                }
-            }
-        }
-
-        private class MyDeleteHandler : DeleteRequestHandler<MyRow>
-        {
-            protected override void ValidateRequest()
-            {
-                base.ValidateRequest();
-
-                var user = (UserDefinition)Authorization.UserDefinition;
-                if (Row.TenantId != user.TenantId)
-                    Authorization.ValidatePermission(PermissionKeys.Tenants);
-            }
-        }
-
-        private class MyRetrieveHandler : RetrieveRequestHandler<MyRow>
-        {
-            protected override void PrepareQuery(SqlQuery query)
-            {
-                base.PrepareQuery(query);
-
-                var user = (UserDefinition)Authorization.UserDefinition;
-                if (!Authorization.HasPermission(PermissionKeys.Tenants))
-                    query.Where(fld.TenantId == user.TenantId);
-            }
-        }
-
-        private class MyListHandler : ListRequestHandler<MyRow>
-        {
-            protected override void ApplyFilters(SqlQuery query)
-            {
-                base.ApplyFilters(query);
-
-                var user = (UserDefinition)Authorization.UserDefinition;
-                if (!Authorization.HasPermission(PermissionKeys.Tenants))
-                    query.Where(fld.TenantId == user.TenantId);
-            }
-        }
+        private class MySaveHandler : SaveRequestHandler<MyRow> {}
+        private class MyDeleteHandler : DeleteRequestHandler<MyRow> {}
+        private class MyRetrieveHandler : RetrieveRequestHandler<MyRow> {}
+        private class MyListHandler : ListRequestHandler<MyRow> {}
     }
 }
