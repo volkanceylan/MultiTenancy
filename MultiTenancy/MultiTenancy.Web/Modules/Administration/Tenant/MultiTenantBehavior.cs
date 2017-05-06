@@ -20,16 +20,14 @@ namespace MultiTenancy
             return true;
         }
 
-        public void OnPrepareQuery(IRetrieveRequestHandler handler,
-        SqlQuery query)
+        public void OnPrepareQuery(IRetrieveRequestHandler handler, SqlQuery query)
         {
             var user = (UserDefinition)Authorization.UserDefinition;
             if (!Authorization.HasPermission(PermissionKeys.Tenants))
                 query.Where(fldTenantId == user.TenantId);
         }
 
-        public void OnPrepareQuery(IListRequestHandler handler,
-        SqlQuery query)
+        public void OnPrepareQuery(IListRequestHandler handler, SqlQuery query)
         {
             var user = (UserDefinition)Authorization.UserDefinition;
             if (!Authorization.HasPermission(PermissionKeys.Tenants))
@@ -39,9 +37,17 @@ namespace MultiTenancy
         public void OnSetInternalFields(ISaveRequestHandler handler)
         {
             if (handler.IsCreate)
-                fldTenantId[handler.Row] =
-                ((UserDefinition)Authorization
-                .UserDefinition).TenantId;
+                fldTenantId[handler.Row] = ((UserDefinition)Authorization.UserDefinition).TenantId;
+        }
+
+        public void OnValidateRequest(ISaveRequestHandler handler)
+        {
+            if (handler.IsUpdate)
+            {
+                var user = (UserDefinition)Authorization.UserDefinition;
+                if (fldTenantId[handler.Old] != fldTenantId[handler.Row])
+                    Authorization.ValidatePermission(PermissionKeys.Tenants);
+            }
         }
 
         public void OnValidateRequest(IDeleteRequestHandler handler)
@@ -71,6 +77,5 @@ namespace MultiTenancy
         public void OnReturn(ISaveRequestHandler handler) { }
         public void OnValidateRequest(IRetrieveRequestHandler handler) { }
         public void OnValidateRequest(IListRequestHandler handler) { }
-        public void OnValidateRequest(ISaveRequestHandler handler) { }
     }
 }
