@@ -13,7 +13,7 @@ namespace MultiTenancy.Northwind.Entities
     [ModifyPermission(PermissionKeys.General)]
     [LocalizationRow(typeof(CategoryLangRow))]
     [LookupScript("Northwind.Category", LookupType = typeof(MultiTenantRowLookupScript<>))]
-    public sealed class CategoryRow : Row, IIdRow, INameRow, IMultiTenantRow
+    public sealed class CategoryRow : MultiTenantRow, IIdRow, INameRow
     {
         [DisplayName("Category Id"), Identity]
         public Int32? CategoryID
@@ -43,13 +43,6 @@ namespace MultiTenancy.Northwind.Entities
             set { Fields.Picture[this] = value; }
         }
 
-        [Insertable(false), Updatable(false)]
-        public Int32? TenantId
-        {
-            get { return Fields.TenantId[this]; }
-            set { Fields.TenantId[this] = value; }
-        }
-
         IIdField IIdRow.IdField
         {
             get { return Fields.CategoryID; }
@@ -60,11 +53,6 @@ namespace MultiTenancy.Northwind.Entities
             get { return Fields.CategoryName; }
         }
 
-        public Int32Field TenantIdField
-        {
-            get { return Fields.TenantId; }
-        }
-
         public static readonly RowFields Fields = new RowFields().Init();
 
         public CategoryRow()
@@ -72,13 +60,12 @@ namespace MultiTenancy.Northwind.Entities
         {
         }
 
-        public class RowFields : RowFieldsBase
+        public class RowFields : MultiTenantFields
         {
             public Int32Field CategoryID;
             public StringField CategoryName;
             public StringField Description;
             public StreamField Picture;
-            public Int32Field TenantId;
 
             public RowFields()
             {

@@ -11,7 +11,7 @@ namespace MultiTenancy.Northwind.Entities
     [ReadPermission(PermissionKeys.General)]
     [ModifyPermission(PermissionKeys.General)]
     [LookupScript("Northwind.Region", LookupType = typeof(MultiTenantRowLookupScript<>))]
-    public sealed class RegionRow : Row, IIdRow, INameRow, IMultiTenantRow
+    public sealed class RegionRow : MultiTenantRow, IIdRow, INameRow
     {
         [DisplayName("Region Id"), PrimaryKey, NotNull, Updatable(false), QuickSearch]
         public Int32? RegionID
@@ -27,13 +27,6 @@ namespace MultiTenancy.Northwind.Entities
             set { Fields.RegionDescription[this] = value; }
         }
 
-        [Insertable(false), Updatable(false)]
-        public Int32? TenantId
-        {
-            get { return Fields.TenantId[this]; }
-            set { Fields.TenantId[this] = value; }
-        }
-
         IIdField IIdRow.IdField
         {
             get { return Fields.RegionID; }
@@ -44,11 +37,6 @@ namespace MultiTenancy.Northwind.Entities
             get { return Fields.RegionDescription; }
         }
 
-        public Int32Field TenantIdField
-        {
-            get { return Fields.TenantId; }
-        }
-
         public static readonly RowFields Fields = new RowFields().Init();
 
         public RegionRow()
@@ -56,11 +44,10 @@ namespace MultiTenancy.Northwind.Entities
         {
         }
 
-        public class RowFields : RowFieldsBase
+        public class RowFields : MultiTenantFields
         {
             public Int32Field RegionID;
             public StringField RegionDescription;
-            public Int32Field TenantId;
 
             public RowFields()
             {
