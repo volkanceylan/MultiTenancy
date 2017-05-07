@@ -14,7 +14,7 @@ namespace MultiTenancy.Northwind.Forms
         [EditLink, Width(200)]
         public String TerritoryDescription { get; set; }
         [EditLink(ItemType = "Northwind.Region", IdField = "RegionID"), Width(150)]
-        [LookupEditor(typeof(Entities.RegionRow)), QuickFilter]
+        [LookupEditor(typeof(Scripts.RegionLookup)), QuickFilter]
         public String RegionDescription { get; set; }
     }
 }

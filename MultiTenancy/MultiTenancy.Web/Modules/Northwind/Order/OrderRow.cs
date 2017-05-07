@@ -35,7 +35,7 @@ namespace MultiTenancy.Northwind.Entities
         }
 
         [DisplayName("Employee"), ForeignKey(typeof(EmployeeRow)), LeftJoin("e")]
-        [LookupEditor(typeof(EmployeeRow)), TextualField("EmployeeFullName")]
+        [LookupEditor("Northwind.Employee"), TextualField("EmployeeFullName")]
         public Int32? EmployeeID
         {
             get { return Fields.EmployeeID[this]; }
@@ -91,7 +91,7 @@ namespace MultiTenancy.Northwind.Entities
             set { Fields.ShippingState[this] = (Int32?)value; }
         }
 
-        [DisplayName("Ship Via"), ForeignKey(typeof(ShipperRow)), LeftJoin("via"), LookupEditor(typeof(ShipperRow))]
+        [DisplayName("Ship Via"), ForeignKey(typeof(ShipperRow)), LeftJoin("via"), LookupEditor("Northwind.Shipper")]
         public Int32? ShipVia
         {
             get { return Fields.ShipVia[this]; }

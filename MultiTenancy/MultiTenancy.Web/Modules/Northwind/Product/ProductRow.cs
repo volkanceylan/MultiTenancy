@@ -46,7 +46,7 @@ namespace MultiTenancy.Northwind.Entities
         }
 
         [DisplayName("Supplier"), ForeignKey(typeof(SupplierRow)), LeftJoin("sup")]
-        [LookupEditor(typeof(SupplierRow), InplaceAdd = true)]
+        [LookupEditor("Northwind.Supplier", InplaceAdd = true)]
         public Int32? SupplierID
         {
             get { return Fields.SupplierID[this]; }
@@ -54,7 +54,7 @@ namespace MultiTenancy.Northwind.Entities
         }
 
         [DisplayName("Category"), ForeignKey(typeof(CategoryRow)), LeftJoin("cat"), LookupInclude]
-        [LookupEditor(typeof(CategoryRow), InplaceAdd = true)]
+        [LookupEditor("Northwind.Category", InplaceAdd = true)]
         public Int32? CategoryID
         {
             get { return Fields.CategoryID[this]; }

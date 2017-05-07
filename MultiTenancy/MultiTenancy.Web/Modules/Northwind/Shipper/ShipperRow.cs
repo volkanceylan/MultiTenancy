@@ -10,7 +10,6 @@ namespace MultiTenancy.Northwind.Entities
     [ConnectionKey("Northwind"), TableName("Shippers"), DisplayName("Shippers"), InstanceName("Shipper"), TwoLevelCached]
     [ReadPermission(PermissionKeys.General)]
     [ModifyPermission(PermissionKeys.General)]
-    [LookupScript("Northwind.Shipper")]
     public sealed class ShipperRow : Row, IIdRow, INameRow, IMultiTenantRow
     {
         [DisplayName("Shipper Id"), Identity]

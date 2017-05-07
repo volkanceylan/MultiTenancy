@@ -107,7 +107,7 @@ namespace MultiTenancy.Northwind.Entities
             set { Fields.LastContactDate[this] = value; }
         }
 
-        [Origin("cd"), LookupEditor(typeof(EmployeeRow))]
+        [Origin("cd"), LookupEditor("Northwind.Employee")]
         public Int32? LastContactedBy
         {
             get { return Fields.LastContactedBy[this]; }
@@ -135,7 +135,7 @@ namespace MultiTenancy.Northwind.Entities
             set { Fields.NoteList[this] = value; }
         }
         
-        [LookupEditor(typeof(EmployeeRow), Multiple = true), NotMapped]
+        [LookupEditor("Northwind.Employee", Multiple = true), NotMapped]
         [LinkingSetRelation(typeof(CustomerRepresentativesRow), "CustomerId", "EmployeeId")]
         [MinSelectLevel(SelectLevel.Details), QuickFilter]
         public List<Int32> Representatives

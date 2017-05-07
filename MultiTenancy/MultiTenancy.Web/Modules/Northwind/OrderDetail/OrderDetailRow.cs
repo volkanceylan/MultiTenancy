@@ -27,7 +27,7 @@ namespace MultiTenancy.Northwind.Entities
         }
 
         [DisplayName("Product"), PrimaryKey, ForeignKey(typeof(ProductRow)), LeftJoin("p")]
-        [LookupEditor(typeof(ProductRow))]
+        [LookupEditor("Northwind.Product")]
         public Int32? ProductID
         {
             get { return Fields.ProductID[this]; }

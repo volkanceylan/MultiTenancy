@@ -11,7 +11,6 @@ namespace MultiTenancy.Northwind.Entities
     [ConnectionKey("Northwind"), TableName("Categories"), DisplayName("Categories"), InstanceName("Category"), TwoLevelCached]
     [ReadPermission(PermissionKeys.General)]
     [ModifyPermission(PermissionKeys.General)]
-    [LookupScript("Northwind.Category")]
     [LocalizationRow(typeof(CategoryLangRow))]
     public sealed class CategoryRow : Row, IIdRow, INameRow, IMultiTenantRow
     {
