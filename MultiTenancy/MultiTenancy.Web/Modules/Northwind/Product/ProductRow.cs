@@ -11,7 +11,7 @@ namespace MultiTenancy.Northwind.Entities
     [ConnectionKey("Northwind"), TableName("Products"), DisplayName("Products"), InstanceName("Product"), TwoLevelCached]
     [ReadPermission(PermissionKeys.General)]
     [ModifyPermission(PermissionKeys.General)]
-    [LookupScript("Northwind.Product")]
+    [LookupScript("Northwind.Product", LookupType = typeof(MultiTenantRowLookupScript<>))]
     [CaptureLog(typeof(ProductLogRow))]
     [LocalizationRow(typeof(ProductLangRow))]
     public sealed class ProductRow : Row, IIdRow, INameRow, IMultiTenantRow
@@ -46,7 +46,7 @@ namespace MultiTenancy.Northwind.Entities
         }
 
         [DisplayName("Supplier"), ForeignKey(typeof(SupplierRow)), LeftJoin("sup")]
-        [LookupEditor("Northwind.Supplier", InplaceAdd = true)]
+        [LookupEditor(typeof(SupplierRow), InplaceAdd = true)]
         public Int32? SupplierID
         {
             get { return Fields.SupplierID[this]; }
@@ -54,7 +54,7 @@ namespace MultiTenancy.Northwind.Entities
         }
 
         [DisplayName("Category"), ForeignKey(typeof(CategoryRow)), LeftJoin("cat"), LookupInclude]
-        [LookupEditor("Northwind.Category", InplaceAdd = true)]
+        [LookupEditor(typeof(CategoryRow), InplaceAdd = true)]
         public Int32? CategoryID
         {
             get { return Fields.CategoryID[this]; }

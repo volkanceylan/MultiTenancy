@@ -10,6 +10,7 @@ namespace MultiTenancy.Northwind.Entities
     [ConnectionKey("Northwind"), TableName("Territories"), DisplayName("Territories"), InstanceName("Territory"), TwoLevelCached]
     [ReadPermission(PermissionKeys.General)]
     [ModifyPermission(PermissionKeys.General)]
+    [LookupScript("Northwind.Territory", LookupType = typeof(MultiTenantRowLookupScript<>))]
     public sealed class TerritoryRow : Row, IIdRow, INameRow, IMultiTenantRow
     {
         [DisplayName("ID"), Identity]

@@ -6,7 +6,7 @@ namespace MultiTenancy.Northwind.Scripts
     using Serenity.Web;
 
     [LookupScript("Northwind.Customer")]
-    public class CustomerLookup : RowLookupScript<CustomerRow>
+    public class CustomerLookup : MultiTenantRowLookupScript<CustomerRow>
     {
         public CustomerLookup()
         {

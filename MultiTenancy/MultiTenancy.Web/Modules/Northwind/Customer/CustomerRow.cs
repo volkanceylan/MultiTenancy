@@ -14,6 +14,7 @@ namespace MultiTenancy.Northwind.Entities
     [DeletePermission(PermissionKeys.Customer.Delete)]
     [LeftJoin("cd", "CustomerDetails", "cd.[ID] = t0.[ID]", RowType = typeof(CustomerDetailsRow), TitlePrefix = "")]
     [UpdatableExtension("cd", typeof(CustomerDetailsRow), CascadeDelete = true)]
+    [LookupScript(typeof(Scripts.CustomerLookup))]
     public sealed class CustomerRow : Row, IIdRow, INameRow, IMultiTenantRow
     {
         [DisplayName("ID"), Identity]
@@ -107,7 +108,7 @@ namespace MultiTenancy.Northwind.Entities
             set { Fields.LastContactDate[this] = value; }
         }
 
-        [Origin("cd"), LookupEditor("Northwind.Employee")]
+        [Origin("cd"), LookupEditor(typeof(EmployeeRow))]
         public Int32? LastContactedBy
         {
             get { return Fields.LastContactedBy[this]; }
@@ -135,7 +136,7 @@ namespace MultiTenancy.Northwind.Entities
             set { Fields.NoteList[this] = value; }
         }
         
-        [LookupEditor("Northwind.Employee", Multiple = true), NotMapped]
+        [LookupEditor(typeof(EmployeeRow), Multiple = true), NotMapped]
         [LinkingSetRelation(typeof(CustomerRepresentativesRow), "CustomerId", "EmployeeId")]
         [MinSelectLevel(SelectLevel.Details), QuickFilter]
         public List<Int32> Representatives

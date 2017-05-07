@@ -5,7 +5,7 @@
     using Serenity.Web;
     using System;
 
-    public abstract class MultiTenantRowLookupScript<TRow> : RowLookupScript<TRow>
+    public class MultiTenantRowLookupScript<TRow> : RowLookupScript<TRow>
         where TRow : Row, IMultiTenantRow, new()
     {
         public MultiTenantRowLookupScript()

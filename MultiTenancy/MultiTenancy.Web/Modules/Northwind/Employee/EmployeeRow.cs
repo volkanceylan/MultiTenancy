@@ -11,6 +11,7 @@ namespace MultiTenancy.Northwind.Entities
     [ConnectionKey("Northwind"), TableName("Employees"), DisplayName("Employees"), InstanceName("Employee"), TwoLevelCached]
     [ReadPermission(PermissionKeys.General)]
     [ModifyPermission(PermissionKeys.General)]
+    [LookupScript("Northwind.Employee", LookupType = typeof(MultiTenantRowLookupScript<>))]
     public sealed class EmployeeRow : Row, IIdRow, INameRow, IMultiTenantRow
     {
         [DisplayName("Employee Id"), Identity]

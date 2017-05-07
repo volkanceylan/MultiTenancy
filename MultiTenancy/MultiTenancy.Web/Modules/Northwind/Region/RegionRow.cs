@@ -10,6 +10,7 @@ namespace MultiTenancy.Northwind.Entities
     [ConnectionKey("Northwind"), TableName("Region"), DisplayName("Region"), InstanceName("Region"), TwoLevelCached]
     [ReadPermission(PermissionKeys.General)]
     [ModifyPermission(PermissionKeys.General)]
+    [LookupScript("Northwind.Region", LookupType = typeof(MultiTenantRowLookupScript<>))]
     public sealed class RegionRow : Row, IIdRow, INameRow, IMultiTenantRow
     {
         [DisplayName("Region Id"), PrimaryKey, NotNull, Updatable(false), QuickSearch]
